@@ -1,11 +1,6 @@
 'use strict';
 
-function addToken(url, token) {
-  var seperator  = (url.indexOf('?') === -1) ? '?' : '&';
-  var key = encodeURIComponent(token);
-  token = ':' + encodeURIComponent(token);
-  return url + seperator + key + '=' + token;
-}
+
 
 /**
  * If the list of params are in the tokens object it automatically adds them to
@@ -16,6 +11,18 @@ function addToken(url, token) {
  * @return {String}        Modified url string.
  */
 exports.prepUrl = function(url, tokens) {
+
+  function addToken(url, token) {
+
+    if(tokens[token] === '') {
+      return url;
+    }
+    var seperator  = (url.indexOf('?') === -1) ? '?' : '&';
+    var key = encodeURIComponent(token);
+    token = ':' + encodeURIComponent(token);
+    return url + seperator + key + '=' + token;
+  }
+
   if (!url) {
     throw new Error('No url provided.');
   }

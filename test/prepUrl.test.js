@@ -97,6 +97,25 @@ describe('lib/prepUrl', function () {
     );
   });
 
+
+  describe('given a token with an empty value', function () {
+    var out;
+    before(function() {
+
+      var url = '/';
+      var tokens = {
+        bacon: ''
+      };
+      out = prepUrl(url, tokens);
+
+    });
+
+    it('should not add the token', function () {
+      out.should.equal('/');
+    });
+
+  });
+
 });
 
 
