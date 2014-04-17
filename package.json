@@ -1,0 +1,22 @@
+{
+  "name": "url-builder",
+  "version": "0.0.0",
+  "description": "Build urls based on a url template (as used by express and restify) from an object, when the params are not specified in the tempalte they are added as query params",
+  "main": "url-builder.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/simonmcmanus/url-builder"
+  },
+  "author": "Simon McManus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonmcmanus/url-builder/issues"
+  },
+  "homepage": "https://github.com/simonmcmanus/url-builder"
+}
