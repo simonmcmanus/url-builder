@@ -1,6 +1,6 @@
 {
   "name": "url-builder",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Build urls based on a url template (as used by express and restify) from an object, when the params are not specified in the tempalte they are added as query params",
   "main": "url-builder.js",
   "directories": {
