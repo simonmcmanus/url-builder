@@ -5,6 +5,7 @@ var tokenise = require('../url-builder').tokenise;
 
 describe('lib/tokenise', function () {
 
+// needs to refactoring to take into account prep url parameter.
 
   describe('given a token and url', function () {
 
@@ -15,8 +16,6 @@ describe('lib/tokenise', function () {
       out.should.equal('http://simon.com/123');
     });
   });
-
-
 
   describe('given a url containing multiple tokens', function() {
     var url, tokens, out;
@@ -51,7 +50,7 @@ describe('lib/tokenise', function () {
       tokens = {
         $id$: 123
       };
-      out = tokenise(url, tokens);
+      out = tokenise(url, tokens, true);
     });
     it('should update the token in both places', function() {
       should(out).equal('/bacon/?%24id%24=123');
@@ -65,7 +64,7 @@ describe('lib/tokenise', function () {
         'js',
         'fml'
       ]
-    });
+    }, true);
     it('should add the variable three times in the url', function () {
       out.should.equal('http://simon.com/?types=txt&types=js&types=fml');
     });
@@ -77,7 +76,7 @@ describe('lib/tokenise', function () {
       id: 'a123',
       token2: '321',
       bacon: true
-    });
+    }, true);
     it('should replace both tokens with the right value from the tokens object', function () {
       out.should.equal('http://simon.com/a123/321?bacon=true');
     });
