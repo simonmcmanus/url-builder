@@ -51,9 +51,10 @@ exports.prepUrl = function(url, tokens) {
  *                                         '/asset/:id?query=:query'
  * @param  {Object} tokens The token to be placed into the url, tokens.token
  *                                         does not need to be passed in.
+ * @param  {String} prepUrl    Should the url be prepped- boolean
  * @return {String}        The tokenised url.
  */
-exports.tokenise = function(url, tokens) {
+exports.tokenise = function(url, tokens, prepUrl) {
   function doReplace(url, token, value) {
     //var regex = new RegExp(':' + encodeURIComponent(token), 'g');
     // dont think we need the global flag any more.
@@ -61,7 +62,9 @@ exports.tokenise = function(url, tokens) {
     return url.replace(regex, encodeURI(value));
   }
 
-  url = exports.prepUrl(url, tokens);
+  if(prepUrl) {
+    url = exports.prepUrl(url, tokens);
+  }
 
   for (var token in tokens) {
     if (tokens[token] instanceof Array) {
