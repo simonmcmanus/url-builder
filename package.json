@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/simonmcmanus/url-builder/issues"
   },
-  "homepage": "https://github.com/simonmcmanus/url-builder"
+  "homepage": "https://github.com/simonmcmanus/url-builder",
+  "devDependencies": {
+    "mocha": "^1.19.0"
+  }
 }
