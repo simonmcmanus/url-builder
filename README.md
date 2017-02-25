@@ -1,5 +1,7 @@
 #URL Builder
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/simonmcmanus/url-builder.svg)](https://greenkeeper.io/)
+
 Build and prepare URLs for use with Express and Restify routing.
 
 [![Build Status](https://travis-ci.org/simonmcmanus/url-builder.svg?branch=master)](https://travis-ci.org/simonmcmanus/url-builder)
