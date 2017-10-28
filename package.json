@@ -21,6 +21,6 @@
   "homepage": "https://github.com/simonmcmanus/url-builder",
   "devDependencies": {
     "mocha": "*",
-    "should": "*"
+    "should": ">=13.1.3"
   }
 }
