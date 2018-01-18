@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/simonmcmanus/url-builder",
   "devDependencies": {
-    "mocha": "*",
+    "mocha": ">=5.0.0",
     "should": "*"
   }
 }
