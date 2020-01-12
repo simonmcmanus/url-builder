@@ -19,6 +19,9 @@
     "url": "https://github.com/simonmcmanus/url-builder/issues"
   },
   "homepage": "https://github.com/simonmcmanus/url-builder",
+  "engines": {
+    "node": ">=10.18.1"
+  },
   "devDependencies": {
     "mocha": "*",
     "prettier": "^1.19.1",
