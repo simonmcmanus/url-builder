@@ -1,6 +1,4 @@
-'use strict';
-
-
+"use strict";
 
 /**
  * If the list of params are in the tokens object it automatically adds them to
@@ -11,20 +9,18 @@
  * @return {String}        Modified url string.
  */
 exports.prepUrl = function(url, tokens) {
-
   function addToken(url, token) {
-
-    if(tokens[token] === '') {
+    if (tokens[token] === "") {
       return url;
     }
-    var seperator  = (url.indexOf('?') === -1) ? '?' : '&';
+    var seperator = url.indexOf("?") === -1 ? "?" : "&";
     var key = encodeURIComponent(token);
-    token = ':' + encodeURIComponent(token);
-    return url + seperator + key + '=' + token;
+    token = ":" + encodeURIComponent(token);
+    return url + seperator + key + "=" + token;
   }
 
   if (!url) {
-    throw new Error('No url provided.');
+    throw new Error("No url provided.");
   }
   if (!tokens) {
     return url;
@@ -35,15 +31,15 @@ exports.prepUrl = function(url, tokens) {
       for (var a = 0; a < tokens[token].length; a++) {
         url = addToken(url, token);
       }
-    } else { // should be an array,  think multi check boxes
-      if (url.indexOf(':' + token) === -1) {
+    } else {
+      // should be an array,  think multi check boxes
+      if (url.indexOf(":" + token) === -1) {
         url = addToken(url, token);
       }
     }
   }
   return url;
 };
-
 
 /*
  * Tokenise a url.
@@ -58,11 +54,11 @@ exports.tokenise = function(url, tokens, prepUrl) {
   function doReplace(url, token, value) {
     //var regex = new RegExp(':' + encodeURIComponent(token), 'g');
     // dont think we need the global flag any more.
-    var regex = new RegExp(':' + encodeURIComponent(token));
+    var regex = new RegExp(":" + encodeURIComponent(token));
     return url.replace(regex, encodeURI(value));
   }
 
-  if(prepUrl) {
+  if (prepUrl) {
     url = exports.prepUrl(url, tokens);
   }
 
@@ -74,9 +70,6 @@ exports.tokenise = function(url, tokens, prepUrl) {
     } else {
       url = doReplace(url, token, tokens[token]);
     }
-
-
-
   }
   return url;
 };
