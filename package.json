@@ -19,8 +19,20 @@
     "url": "https://github.com/simonmcmanus/url-builder/issues"
   },
   "homepage": "https://github.com/simonmcmanus/url-builder",
+  "engines": {
+    "node": ">=10.18.1"
+  },
   "devDependencies": {
+    "husky": "^4.0.7",
     "mocha": "*",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "should": "*"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "pre-push": "npm test"
+    }
   }
 }
