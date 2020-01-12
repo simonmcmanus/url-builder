@@ -1,4 +1,4 @@
-"use strict";
+'use strict'
 
 /**
  * If the list of params are in the tokens object it automatically adds them to
@@ -10,38 +10,38 @@
  */
 exports.prepUrl = function(url, tokens) {
   function addToken(url, token) {
-    if (tokens[token] === "") {
-      return url;
+    if (tokens[token] === '') {
+      return url
     }
-    var seperator = url.indexOf("?") === -1 ? "?" : "&";
-    var key = encodeURIComponent(token);
-    token = ":" + encodeURIComponent(token);
-    return url + seperator + key + "=" + token;
+    const separator = url.indexOf('?') === -1 ? '?' : '&'
+    const key = encodeURIComponent(token)
+    token = ':' + encodeURIComponent(token)
+    return url + separator + key + '=' + token
   }
 
   if (!url) {
-    throw new Error("No url provided.");
+    throw new Error('No url provided.')
   }
   if (!tokens) {
-    return url;
+    return url
   }
-  for (var token in tokens) {
+  for (let token in tokens) {
     if (tokens[token] instanceof Array) {
       //- multiple values for the same field.
-      for (var a = 0; a < tokens[token].length; a++) {
-        url = addToken(url, token);
+      for (let a = 0; a < tokens[token].length; a++) {
+        url = addToken(url, token)
       }
     } else {
       // should be an array,  think multi check boxes
-      if (url.indexOf(":" + token) === -1) {
-        url = addToken(url, token);
+      if (url.indexOf(':' + token) === -1) {
+        url = addToken(url, token)
       }
     }
   }
-  return url;
-};
+  return url
+}
 
-/*
+/**
  * Tokenise a url.
  * @param  {String} url    The url to be tokenised, eg:
  *                                         '/asset/:id?query=:query'
@@ -52,24 +52,24 @@ exports.prepUrl = function(url, tokens) {
  */
 exports.tokenise = function(url, tokens, prepUrl) {
   function doReplace(url, token, value) {
-    //var regex = new RegExp(':' + encodeURIComponent(token), 'g');
+    // let regex = new RegExp(':' + encodeURIComponent(token), 'g');
     // dont think we need the global flag any more.
-    var regex = new RegExp(":" + encodeURIComponent(token));
-    return url.replace(regex, encodeURI(value));
+    const regex = new RegExp(':' + encodeURIComponent(token))
+    return url.replace(regex, encodeURI(value))
   }
 
   if (prepUrl) {
-    url = exports.prepUrl(url, tokens);
+    url = exports.prepUrl(url, tokens)
   }
 
-  for (var token in tokens) {
+  for (let token in tokens) {
     if (tokens[token] instanceof Array) {
-      for (var item in tokens[token]) {
-        url = doReplace(url, token, tokens[token][item]);
+      for (let item in tokens[token]) {
+        url = doReplace(url, token, tokens[token][item])
       }
     } else {
-      url = doReplace(url, token, tokens[token]);
+      url = doReplace(url, token, tokens[token])
     }
   }
-  return url;
-};
+  return url
+}
