@@ -23,8 +23,14 @@
     "node": ">=10.18.1"
   },
   "devDependencies": {
+    "husky": "^4.0.7",
     "mocha": "*",
     "prettier": "^1.19.1",
     "should": "*"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
+    }
   }
 }
